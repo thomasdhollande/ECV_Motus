@@ -1,0 +1,139 @@
+:root {
+    --darkBlue: #21313C;
+    --lightBlue: #5490C7;
+    --green: #8FBC17;
+    --white: #F2F2F2;
+    --red: #8B0000;
+    --vh: 100vh;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    color: var(--darkBlue);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--darkBlue);
+}
+
+.container {
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+.button {
+    border: 2px solid var(--darkBlue);
+    border-radius: 999px;
+    background-color: transparent;
+    padding: 0.5rem 3rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--darkBlue);
+    color: var(--white);
+}
+
+.container_title, .container_button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.grid_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--white);
+    padding: 2rem;
+}
+
+.grid {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.case_good, .case_misplaced, .case_notGood {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--darkBlue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+}
+
+.case_misplaced {
+    background-color: yellow;
+}
+
+.case_good {
+    background-color: var(--red);
+}
+
+.players_elements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.players_word_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.alphabet_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.alphabet_container a, .alphabet_container a:visited {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--darkBlue);
+    background-color: transparent;
+    padding: 1rem;
+    border: 2px solid var(--darkBlue);
+    border-radius: 9999px;
+    transition: background 0.3s ease;
+}
+
+.alphabet_container a:hover {
+    color: var(--white);
+    background-color: var(--darkBlue);
+}
+
+#form_game_not_started {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
