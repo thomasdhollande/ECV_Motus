@@ -1,10 +1,11 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Controller;
 
-class PlayersElements implements Controller {
+class PlayersElements implements Controller
+{
     private Controller $decoratedController;
     private string $playersElements;
 
@@ -14,7 +15,8 @@ class PlayersElements implements Controller {
         $this->playersElements = $playersElements;
     }
 
-    public function render(): void {
+    public function render(): void
+    {
         $this->decoratedController->render();
         echo $this->playersElements;
     }

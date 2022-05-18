@@ -18,7 +18,7 @@ class GameLoose implements ListenerInterface
     /** @param ControllerEvent $event */
     public function notify($event): void
     {
-        if ($event->router->getGameLoose() === 'yes') {
+        if ('yes' === $event->router->getGameLoose()) {
             $event->controller = new ControllerGameLoose($event->controller);
         }
     }

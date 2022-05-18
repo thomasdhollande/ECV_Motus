@@ -20,11 +20,11 @@ class GameNotStarted implements ListenerInterface
     /** @param ControllerEvent $event */
     public function notify($event): void
     {
-        if ($event->router->getGameState() === 'off') {
+        if ('off' === $event->router->getGameState()) {
             $objWord = new Word();
             $word = $objWord->getWord();
             unset($objWord);
-            if (isset($word) && $word !== '') {
+            if (isset($word) && '' !== $word) {
                 setcookie('word', strtolower($word));
                 $_COOKIE['word'] = $word;
                 setcookie('gameState', 'on');
@@ -35,9 +35,9 @@ class GameNotStarted implements ListenerInterface
                 $_COOKIE['gameLoose'] = 'no';
                 $objGame = new Game();
                 $max_turns = $objGame->getMaxTurns();
-                for ($i = 1; $i <= $max_turns; $i++) {
-                    setcookie("try$i", " ");
-                    $_COOKIE["try$i"] = " ";
+                for ($i = 1; $i <= $max_turns; ++$i) {
+                    setcookie("try$i", ' ');
+                    $_COOKIE["try$i"] = ' ';
                 }
                 $_SESSION['turns'] = 0;
                 $event->controller = new ControllerGameNotStarted($event->controller);
