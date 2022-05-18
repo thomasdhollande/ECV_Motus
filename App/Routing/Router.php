@@ -12,13 +12,15 @@ class Router
 {
     private array $routes = [
         '/' => Home::class,
-        '/404' => Error404::class
+        '/404' => Error404::class,
     ];
 
     private static string $path;
 
     private static ?Router $router = null;
 
+
+    // c'est pas leur place :/ c'est le role d'un objet game
     private static string $gameState;
     private static string $gameWin;
     private static string $gameLoose;
@@ -31,9 +33,9 @@ class Router
         self::$gameLoose = $_COOKIE['gameLoose'] ?? 'no';
     }
 
-    public static function getFromGlobals(): Router
+    public static function getFromGlobals(): self
     {
-        if (self::$router === null) {
+        if (null === self::$router) {
             self::$router = new self();
         }
 
@@ -46,21 +48,24 @@ class Router
         $controller = new $controllerClass();
 
         if (!$controller instanceof Controller) {
-            throw new \LogicException("controller $controllerClass should implement " . Controller::class);
+            throw new \LogicException("controller $controllerClass should implement ".Controller::class);
         }
 
         return $controller;
     }
 
-    public function getGameState(): string {
+    public function getGameState(): string
+    {
         return self::$gameState;
     }
 
-    public function getGameWin(): string {
+    public function getGameWin(): string
+    {
         return self::$gameWin;
     }
 
-    public function getGameLoose(): string {
+    public function getGameLoose(): string
+    {
         return self::$gameLoose;
     }
 }

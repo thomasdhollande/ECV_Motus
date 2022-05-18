@@ -21,7 +21,7 @@ class GameStarted implements ListenerInterface
     /** @param ControllerEvent $event */
     public function notify($event): void
     {
-        if (($event->router->getGameState() === 'on' || (isset($_GET['gameState']) && $_GET['gameState'] === 'on')) && !isset($_POST['players_word']) && $event->router->getGameWin() !== 'yes') {
+        if (('on' === $event->router->getGameState() || (isset($_GET['gameState']) && 'on' === $_GET['gameState'])) && !isset($_POST['players_word']) && 'yes' !== $event->router->getGameWin()) {
             $objWord = new Word();
             $word = $objWord->getWord();
             unset($objWord);

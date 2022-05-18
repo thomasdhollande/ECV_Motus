@@ -1,10 +1,11 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Controller;
 
-class GameNotStarted implements Controller {
+class GameNotStarted implements Controller
+{
     private Controller $decoratedController;
 
     public function __construct(Controller $controller)
@@ -12,7 +13,8 @@ class GameNotStarted implements Controller {
         $this->decoratedController = $controller;
     }
 
-    public function render(): void {
+    public function render(): void
+    {
         $this->decoratedController->render();
         echo "
         <div class='container'>

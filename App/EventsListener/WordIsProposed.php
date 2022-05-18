@@ -8,7 +8,6 @@ use App\Controller\GameStarted as ControllerGameStarted;
 use App\Controller\PlayersElements;
 use App\Infra\EventsDispatcher\Events\ControllerEvent;
 use App\Infra\EventsDispatcher\ListenerInterface;
-use App\Motus\Game\Game;
 use App\Motus\Player\Player;
 use App\Motus\Word\Word;
 
@@ -22,10 +21,10 @@ class WordIsProposed implements ListenerInterface
     /** @param ControllerEvent $event */
     public function notify($event): void
     {
-        if (($event->router->getGameState() === 'on' || (isset($_GET['gameState']) && $_GET['gameState'] === 'on')) && isset($_POST['players_word'])) {
-            $_SESSION['turns']++;
-            setcookie("try" . $_SESSION['turns'] . "", strtolower($_POST['players_word']));
-            $_COOKIE["try" . $_SESSION['turns'] . ""] = strtolower($_POST['players_word']);
+        if (('on' === $event->router->getGameState() || (isset($_GET['gameState']) && 'on' === $_GET['gameState'])) && isset($_POST['players_word'])) {
+            ++$_SESSION['turns'];
+            setcookie('try'.$_SESSION['turns'].'', strtolower($_POST['players_word']));
+            $_COOKIE['try'.$_SESSION['turns'].''] = strtolower($_POST['players_word']);
 
             $objWord = new Word();
             $word = $objWord->getWord();

@@ -11,12 +11,12 @@ class Dispatcher
      */
     private array $listeners = [];
 
-    public function addListeners(ListenerInterface ...$listeners)
+    public function addListeners(ListenerInterface ...$listeners): void
     {
         $this->listeners = array_merge($this->listeners, $listeners);
     }
 
-    public function dispatch(EventInterface $event)
+    public function dispatch(EventInterface $event): void
     {
         foreach ($this->listeners as $listener) {
             if ($listener->support($event)) {

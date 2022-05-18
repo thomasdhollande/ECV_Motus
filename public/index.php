@@ -2,25 +2,24 @@
 
 declare(strict_types=1);
 
+use App\EventsListener\GameLoose;
 use App\EventsListener\GameNotStarted;
 use App\EventsListener\GameStarted;
 use App\EventsListener\GameWin;
-use App\EventsListener\GameLoose;
 use App\EventsListener\WordIsProposed;
 use App\Infra\EventsDispatcher\Dispatcher;
-use App\Infra\EventsDispatcher\Events\RouterEvent;
 use App\Infra\EventsDispatcher\Events\ControllerEvent;
+use App\Infra\EventsDispatcher\Events\RouterEvent;
 use App\Routing\Router;
 
-if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
-    $url = "https";
-else {
-    $url = "http";
+if (isset($_SERVER['HTTPS']) && 'on' === $_SERVER['HTTPS']) {
+    $url = 'https';
+} else {
+    $url = 'http';
 }
-$url .= "://";
+$url .= '://';
 $url .= $_SERVER['HTTP_HOST'];
 $url .= $_SERVER['REQUEST_URI'];
-
 
 define('SITE_URL', $url);
 
@@ -30,9 +29,9 @@ if (!isset($_COOKIE['gameState'])) {
     setcookie('gameState', 'off');
 }
 
-spl_autoload_register(function ($fqcn) {
+spl_autoload_register(function ($fqcn): void {
     $path = str_replace('\\', '/', $fqcn);
-    require_once(__DIR__ . '/../' . $path . '.php');
+    require_once __DIR__.'/../'.$path.'.php';
 });
 
 $eventDispatcher = new Dispatcher();

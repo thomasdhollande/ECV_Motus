@@ -18,7 +18,7 @@ class GameWin implements ListenerInterface
     /** @param ControllerEvent $event */
     public function notify($event): void
     {
-        if ($event->router->getGameWin() === 'yes') {
+        if ('yes' === $event->router->getGameWin()) {
             $event->controller = new ControllerGameWin($event->controller);
         }
     }

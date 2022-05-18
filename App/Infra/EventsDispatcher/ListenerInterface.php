@@ -7,5 +7,6 @@ namespace App\Infra\EventsDispatcher;
 interface ListenerInterface
 {
     public function support($event): bool;
+
     public function notify($event);
 }

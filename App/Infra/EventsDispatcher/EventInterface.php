@@ -13,8 +13,8 @@ interface EventInterface
      * previous listener halted propagation.
      *
      * @return bool
-     *   True if the Event is complete and no further listeners should be called.
-     *   False to continue calling listeners.
+     *              True if the Event is complete and no further listeners should be called.
+     *              False to continue calling listeners.
      */
     public function isPropagationStopped(): bool;
 }
